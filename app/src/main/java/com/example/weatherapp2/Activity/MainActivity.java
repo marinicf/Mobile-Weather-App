@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                         humidity = weatherResponse.getList().get(0).getMain().getHumidity()+" %";
                         pressure = weatherResponse.getList().get(0).getMain().getPressure()+" hPa";
                         sunrise = Shared.convertUnixToDate(weatherResponse.getCity().getSunrise());
-                        sunset = Shared.convertUnixToDate(weatherResponse.getCity().getSunset());
+                        sunset = Shared.convertUnixToDate2(weatherResponse.getCity().getSunset());
                         windSpeed = weatherResponse.getList().get(0).getWind().getSpeed()+" mps";
                         icon = getResources().getIdentifier(Shared.UpdateIcon(weatherResponse.getList().get(0).getWeather().get(0).getId()),"drawable",getPackageName());
                         CityData newCity = new CityData(cityName, temp, desc,lat, lon, humidity, sunrise, sunset,pressure, windSpeed,icon);

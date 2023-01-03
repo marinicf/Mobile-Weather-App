@@ -1,5 +1,6 @@
 package com.example.weatherapp2.Shared;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -37,9 +38,37 @@ public class Shared {
     }
     public static String convertUnixToDate(long dt){
         Date date = new Date(dt*1000L);
+        DateFormat dateFormat = new SimpleDateFormat();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat sdfM = new SimpleDateFormat("mm");
+        SimpleDateFormat sdfH = new SimpleDateFormat("H");
+        String formatted = sdf.format(date);
+        String formattedM = sdfM.format(date);
+        String formattedH = sdfH.format(date);
+        //String h = (String) dateFormat.format("HH");
+
+        return  foramtedDate(formattedM,formattedH);
+    }
+    public static String convertUnixToDate2(long dt){
+        Date date = new Date(dt*1000L);
+        DateFormat dateFormat = new SimpleDateFormat();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         String formatted = sdf.format(date);
 
+        //String h = (String) dateFormat.format("HH");
+
         return formatted;
+    }
+
+    private static String foramtedDate(String h, String m) {
+
+        String result = h+" sati i ";
+        if (m.contains("0")){
+            result += m.replace("0","")+ " minuta";
+        }
+        else{
+            result += m +" minuta";
+        }
+        return result;
     }
 }
